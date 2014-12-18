@@ -1,0 +1,22 @@
+{
+  "name": "selenium-extend",
+  "version": "0.0.0",
+  "description": "extension to make webdriverjs less async",
+  "main": "selenium-extend.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/shri/selenium-extend.git"
+  },
+  "author": "Shri Ganeshram",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shri/selenium-extend/issues"
+  },
+  "homepage": "https://github.com/shri/selenium-extend",
+  "dependencies": {
+    "selenium-webdriver": "^2.44.0"
+  }
+}
