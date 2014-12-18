@@ -58,7 +58,8 @@ function applyWrapper(driver) {
     extend.isClickable("div#extension-settings-list div:nth-child(1) label.incognito-control input");
 
     for (var i = 0; i < numberOfExtensions; i++) {
-      extend.click("div#extension-settings-list div.extension-list-item-wrapper:nth-of-type(" + i + ") label.incognito-control input");
+      var num = i + 1;
+      extend.click("div#extension-settings-list div.extension-list-item-wrapper:nth-of-type(" + num + ") label.incognito-control input");
     }
     
   };
