@@ -1,6 +1,6 @@
 {
   "name": "selenium-extend",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "description": "extension to make webdriverjs less async",
   "main": "selenium-extend.js",
   "scripts": {
