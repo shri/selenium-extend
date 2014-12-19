@@ -38,7 +38,7 @@ var driverPath = "path/to/chromedriver";
 var driver = extend.createChromeWithExtension(extensionPath, driverPath);
 ```
 
-Applying to a new driver:
+Applying to an existing driver:
 ```js
 var extend = require('selenium-extend');
 
