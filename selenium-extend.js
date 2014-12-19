@@ -6,13 +6,21 @@ var chrome    = require('selenium-webdriver/chrome');
 
 module.exports = {
   createChrome: createChrome,
-  createChromeWithExtension: createChromeWithExtension
+  createChromeWithExtension: createChromeWithExtension,
+  addExtend: applyWrapper,
+  setWaitTime: setWaitTime
 };
 
-function createChrome() {
+var WAITTIME = 10000; // default wait time
+
+function setWaitTime(time) {
+  WAITTIME = time;
+}
+
+function createChrome(driverPath) {
 
   var o = new chrome.Options();
-  var s = new chrome.ServiceBuilder(driverPath).build(); // 'bin/chromedriver'
+  var s = new chrome.ServiceBuilder(driverPath).build(); 
   var driver = chrome.createDriver(o, s);
   applyWrapper(driver);
 
@@ -22,9 +30,9 @@ function createChrome() {
 function createChromeWithExtension(extensionPath, driverPath) {
 
   var o = new chrome.Options();
-  o.addArguments("load-extension="+extensionPath); // unpacked, ../chrome-ext
+  o.addArguments("load-extension="+extensionPath); 
   o.addArguments("--extensions-on-chrome-urls"); 
-  var s = new chrome.ServiceBuilder(driverPath).build();  // bin/chromedriver
+  var s = new chrome.ServiceBuilder(driverPath).build();  
   var driver = chrome.createDriver(o, s);
   driver.manage().window().setSize(1268, 648);
   applyWrapper(driver);
@@ -38,7 +46,7 @@ function applyWrapper(driver) {
 
   function waitForElement(css) {
 
-    driver.wait(until.elementLocated(by.css(css)), 10000);
+    driver.wait(until.elementLocated(by.css(css)), WAITTIME);
     
   }
 
@@ -51,6 +59,12 @@ function applyWrapper(driver) {
   extend.enableIncognito = function enableIncognito(numberOfExtensions) {
 
     // first extension is always selenium
+
+    // assume desire for 2 extensions if numberOfExtensions is undefined
+    // (Selenium and a user defined extension)
+    if (numberOfExtensions === undefined) {
+      numberOfExtensions = 2;
+    }
 
     var extensionsURL = "chrome://extensions-frame"; //used to avoid iframe
     driver.get(extensionsURL);
@@ -66,7 +80,7 @@ function applyWrapper(driver) {
 
   extend.isClickable = function waitForClickableElement(css) {
 
-    driver.wait(until.elementLocated(by.css(css)), 10000);
+    driver.wait(until.elementLocated(by.css(css)), WAITTIME);
 
     var element = driver.findElement(by.css(css));
     driver.wait(function () {
@@ -76,7 +90,7 @@ function applyWrapper(driver) {
 
         return element.isEnabled();
       });
-    }, 10000);
+    }, WAITTIME);
 
   };
 
