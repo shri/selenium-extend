@@ -2,7 +2,7 @@ selenium-extend
 ===============
 
 selenium-extend is an npm module that makes
-async selenium-webdriver code a lot more 
+async [selenium-webdriver](https://www.npmjs.com/package/selenium-webdriver) code a lot more 
 sane. It's most valuable when used in
 conjunction with the selenium chromedriver
 and makes working with chrome extensions
@@ -11,7 +11,7 @@ easier.
 
 selenium-extend does not overwrite existing
 driver functionality. selenium-extend adds
-an extend object with various methods that
+an object named `extend` with various methods that
 wrap selenium-webdriver functions into 
 functions that make sense in the context
 of navigating a browser.
@@ -19,12 +19,12 @@ of navigating a browser.
 ##Installation
 
 ```sh
-npm install selenium-extend
+npm install --save selenium-extend
 ```
 
 ##Initialization
 
-Constructing a fresh driver:
+Creating a new driver with extend methods:
 ```js
 var extend = require('selenium-extend');
 
@@ -38,7 +38,7 @@ var driverPath = "path/to/chromedriver";
 var driver = extend.createChromeWithExtension(extensionPath, driverPath);
 ```
 
-Applying to an existing driver:
+Adding extend methods to an existing driver:
 ```js
 var extend = require('selenium-extend');
 
