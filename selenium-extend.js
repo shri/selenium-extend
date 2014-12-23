@@ -96,7 +96,7 @@ function applyWrapper(driver) {
 
   extend.click = function waitAndClick(css) {
 
-    waitForElement(css);
+    extend.isClickable(css);
 
     driver
       .findElement(by.css(css))
@@ -127,7 +127,7 @@ function applyWrapper(driver) {
 
     waitForElement(css);
 
-    element = driver.findElement(by.css(css));
+    var element = driver.findElement(by.css(css));
 
     //start drag event
     driver
@@ -182,6 +182,19 @@ function applyWrapper(driver) {
       });
 
     });
+  };
+
+  extend.moveToElement = function moveToElement(css) {
+
+    waitForElement(css);
+
+    var script = [
+      'var element = document.querySelector("' + css + '");',
+      "element.scrollIntoView();"
+    ].join('\n');
+
+    driver.executeScript(script);
+
   };
 
 }

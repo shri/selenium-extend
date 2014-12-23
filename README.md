@@ -100,6 +100,11 @@ Switch to the next window:
 driver.extend.toNextWindow();
 ```
 
+Scroll browser to element:
+```js
+driver.extend.moveToElement(css);
+```
+
 ##Future
 
 The following are still to be done:
