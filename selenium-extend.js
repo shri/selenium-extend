@@ -103,6 +103,17 @@ function applyWrapper(driver) {
       .click();
   };
 
+  extend.doubleClick = function waitAndDoubleClick(css) {
+
+    extend.isClickable(css);
+
+    var element = driver.findElement(by.css(css))
+    driver
+      .actions()
+      .doubleClick(element)
+      .perform();
+  };
+
   extend.exists = function waitAndExists(css) {
 
     waitForElement(css);
@@ -121,6 +132,15 @@ function applyWrapper(driver) {
     return driver
       .findElement(by.css(css))
       .getText();
+  };
+
+  extend.getValue = function waitAndGetValue(css) {
+
+    waitForElement(css);
+
+    return driver
+      .findElement(by.css(css))
+      .getAttribute("value");
   };
 
   extend.selectText = function selectText(css, offset1, offset2){

@@ -74,6 +74,11 @@ Click on an element:
 driver.extend.click(css); //css is selector
 ```
 
+Double click on an element (really useful for selecting all in input):
+```js
+driver.extend.doubleClick(css);
+```
+
 Check if an element exists:
 ```js
 driver.extend.exists(css);
@@ -82,6 +87,11 @@ driver.extend.exists(css);
 Get the text value of an element:
 ```js
 driver.extend.getText(css);
+```
+
+Get the value of an element (input):
+```js
+driver.extend.getValue(css);
 ```
 
 Emulate selecting text in DOM with a mouse pointer:
